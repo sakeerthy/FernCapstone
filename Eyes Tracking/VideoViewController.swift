@@ -20,8 +20,6 @@ class VideoViewController: UIViewController {
         vid.play()
     }
     private func animation(viewAnimation: VideoView) {
-        //while(true){
-//        for index in 1...100{
             VideoView.animate(withDuration: 10, animations: {
                 viewAnimation.frame.origin.x = +viewAnimation.frame.width
             }) { (_) in
@@ -40,8 +38,6 @@ class VideoViewController: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + 43.0, execute: {
             self.animation(viewAnimation: self.vid)
         })
-//        }
-        //animation(viewAnimation: vid)
     }
 
     override func viewDidAppear(_ animated: Bool){
