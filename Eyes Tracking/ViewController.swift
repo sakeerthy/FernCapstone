@@ -6,6 +6,7 @@ import WebKit
 
 class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
 
+    @IBOutlet weak var vid: VideoView!
     @IBOutlet weak var webView: WKWebView!
     @IBOutlet var sceneView: ARSCNView!
     @IBOutlet weak var eyePositionIndicatorView: UIView!
@@ -14,6 +15,8 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
     @IBOutlet weak var lookAtPositionXLabel: UILabel!
     @IBOutlet weak var lookAtPositionYLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
+
+    var left: [simd_float4x4] = []
 
     var faceNode: SCNNode = SCNNode()
 
@@ -74,7 +77,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        webView.load(URLRequest(url: URL(string: "https://www.apple.com")!))
+        //webView.load(URLRequest(url: URL(string: "https://www.apple.com")!))
 
         // Setup Design Elements
         eyePositionIndicatorView.layer.cornerRadius = eyePositionIndicatorView.bounds.width / 2
@@ -83,8 +86,8 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
 
         blurBarView.layer.cornerRadius = 36
         blurBarView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        webView.layer.cornerRadius = 16
-        webView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        //webView.layer.cornerRadius = 16
+        //webView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
 
         // Set the view's delegate
         sceneView.delegate = self
@@ -117,9 +120,22 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
         sceneView.session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
     }
 
+    override func viewDidAppear(_ animated: Bool){
+        super.viewDidAppear(animated)
+        vid.configure(url: "https://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4")
+        vid.isLoop = true
+        vid.play()
+        animation(viewAnimation: vid)
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0, execute: {
+            let PostViewController = self.storyboard?.instantiateViewController(withIdentifier: "PostViewController") as! PostViewController
+
+            self.navigationController?.pushViewController(PostViewController, animated: true)
+        })
+    }
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-
         // Pause the view's session
         sceneView.session.pause()
     }
@@ -138,10 +154,13 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
 
         eyeRNode.simdTransform = anchor.rightEyeTransform
         eyeLNode.simdTransform = anchor.leftEyeTransform
-
+        left.append(anchor.leftEyeTransform);
         var eyeLLookAt = CGPoint()
         var eyeRLookAt = CGPoint()
-
+        print("Left: ")
+        print(anchor.leftEyeTransform)
+        print("Right: ")
+        print(anchor.rightEyeTransform)
         let heightCompensation: CGFloat = 312
 
         DispatchQueue.main.async {
@@ -153,9 +172,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
             let phoneScreenEyeLHitTestResults = self.virtualPhoneNode.hitTestWithSegment(from: self.lookAtTargetEyeLNode.worldPosition, to: self.eyeLNode.worldPosition, options: nil)
 
             for result in phoneScreenEyeRHitTestResults {
-
                 eyeRLookAt.x = CGFloat(result.localCoordinates.x) / (self.phoneScreenSize.width / 2) * self.phoneScreenPointSize.width
-
                 eyeRLookAt.y = CGFloat(result.localCoordinates.y) / (self.phoneScreenSize.height / 2) * self.phoneScreenPointSize.height + heightCompensation
             }
 
@@ -175,6 +192,8 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
 
             let smoothEyeLookAtPositionX = self.eyeLookAtPositionXs.average!
             let smoothEyeLookAtPositionY = self.eyeLookAtPositionYs.average!
+            print("Left Eye: X: " + String(Float(eyeLLookAt.x)) + " Y: " + String(Float(eyeLLookAt.y)))
+            print("Right Eye: X: " + String(Float(eyeRLookAt.x)) + " Y: " + String(Float(eyeRLookAt.y)))
 
             // update indicator position
             self.eyePositionIndicatorView.transform = CGAffineTransform(translationX: smoothEyeLookAtPositionX, y: smoothEyeLookAtPositionY)
@@ -206,5 +225,37 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
         faceNode.transform = node.transform
         guard let faceAnchor = anchor as? ARFaceAnchor else { return }
         update(withFaceAnchor: faceAnchor)
+    }
+
+    func animation(viewAnimation: VideoView) {
+        VideoView.animate(withDuration: 10, animations: {
+            viewAnimation.frame.origin.x = +viewAnimation.frame.width*1.3
+        }) { (_) in
+            VideoView.animate(withDuration: 10, delay: 1, options: [.curveEaseIn], animations: {
+                viewAnimation.frame.origin.y += viewAnimation.frame.width*2
+            }) { (_) in
+                VideoView.animate(withDuration: 10, delay: 1, options: [.curveEaseIn], animations: {
+                    viewAnimation.frame.origin.x -= viewAnimation.frame.width*1.3
+                }) { (_) in
+                    VideoView.animate(withDuration: 10, delay: 1, options: [.curveEaseIn], animations: {
+                        viewAnimation.frame.origin.y -= viewAnimation.frame.width*2
+                    }) { (_) in
+                    }
+                }
+            }
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 43.0, execute: {
+            self.animation(viewAnimation: self.vid)
+        })
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if segue.destination is PostViewController
+        {
+            let vc = segue.destination as? PostViewController
+//            vc?.username = "Arthur Dent"
+//            vc?.leftData = left
+        }
     }
 }

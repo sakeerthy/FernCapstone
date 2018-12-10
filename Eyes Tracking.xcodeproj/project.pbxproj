@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		018D03B721B075C7007DA264 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018D03B621B075C7007DA264 /* VideoViewController.swift */; };
 		018D03B921B076BD007DA264 /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018D03B821B076BD007DA264 /* VideoView.swift */; };
+		018D03BD21B4B096007DA264 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018D03BC21B4B096007DA264 /* PostViewController.swift */; };
 		1174DA0B21AF374F00DB84EE /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1174DA0A21AF374F00DB84EE /* HomeViewController.swift */; };
 		D0D25B8920C80F5500A25627 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D25B8820C80F5500A25627 /* Extensions.swift */; };
 		D0E5847A20C806050052967A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E5847920C806050052967A /* AppDelegate.swift */; };
@@ -21,6 +22,7 @@
 /* Begin PBXFileReference section */
 		018D03B621B075C7007DA264 /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 		018D03B821B076BD007DA264 /* VideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoView.swift; sourceTree = "<group>"; };
+		018D03BC21B4B096007DA264 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		1174DA0A21AF374F00DB84EE /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		D0D25B8820C80F5500A25627 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D0E5847620C806050052967A /* Eyes Tracking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Eyes Tracking.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -68,6 +70,7 @@
 				D0D25B8820C80F5500A25627 /* Extensions.swift */,
 				018D03B621B075C7007DA264 /* VideoViewController.swift */,
 				018D03B821B076BD007DA264 /* VideoView.swift */,
+				018D03BC21B4B096007DA264 /* PostViewController.swift */,
 				D0E5847F20C806050052967A /* Main.storyboard */,
 				D0E5848220C806050052967A /* Assets.xcassets */,
 				D0E5848420C806050052967A /* LaunchScreen.storyboard */,
@@ -149,6 +152,7 @@
 			files = (
 				018D03B921B076BD007DA264 /* VideoView.swift in Sources */,
 				D0D25B8920C80F5500A25627 /* Extensions.swift in Sources */,
+				018D03BD21B4B096007DA264 /* PostViewController.swift in Sources */,
 				D0E5847E20C806050052967A /* ViewController.swift in Sources */,
 				D0E5847A20C806050052967A /* AppDelegate.swift in Sources */,
 				018D03B721B075C7007DA264 /* VideoViewController.swift in Sources */,

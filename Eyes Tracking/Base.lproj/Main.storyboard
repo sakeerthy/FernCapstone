@@ -75,14 +75,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="djl-g7-Xzm">
-                                <rect key="frame" x="105" y="680" width="167" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <segue destination="nkd-Jd-INa" kind="show" id="O8l-zE-4OH"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -121,14 +113,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <wkWebView clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="saK-eH-dzW">
-                                <rect key="frame" x="0.0" y="44" width="375" height="768"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <wkWebViewConfiguration key="configuration">
-                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                                    <wkPreferences key="preferences"/>
-                                </wkWebViewConfiguration>
-                            </wkWebView>
                             <visualEffectView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vT5-6S-UTW">
                                 <rect key="frame" x="0.0" y="652" width="375" height="160"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="KW7-5O-3pA">
@@ -147,6 +131,11 @@
                                     <constraint firstAttribute="width" secondItem="W9c-Gg-veJ" secondAttribute="height" multiplier="3:4" id="GTL-RY-QyZ"/>
                                 </constraints>
                             </arscnView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SL3-r8-3xV" customClass="VideoView" customModule="Eyes_Tracking" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44" width="161" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                             <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wol-sx-K7a">
                                 <rect key="frame" x="123.66666666666669" y="342" width="128" height="128"/>
                                 <subviews>
@@ -266,22 +255,26 @@ Position Estimation</string>
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FTs-JG-qUP">
+                                <rect key="frame" x="169" y="572" width="37" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Done"/>
+                                <connections>
+                                    <segue destination="dII-UG-YfO" kind="show" id="2dt-8u-Joa"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="9i0-fu-tQr" firstAttribute="trailing" secondItem="W9c-Gg-veJ" secondAttribute="trailing" constant="16" id="2Ia-Z0-Hx9"/>
                             <constraint firstAttribute="trailing" secondItem="vT5-6S-UTW" secondAttribute="trailing" id="2SB-gQ-Lv1"/>
-                            <constraint firstItem="saK-eH-dzW" firstAttribute="leading" secondItem="9i0-fu-tQr" secondAttribute="leading" id="2ZC-Fp-hnP"/>
                             <constraint firstItem="Aaq-uW-sX7" firstAttribute="leading" secondItem="9i0-fu-tQr" secondAttribute="leading" constant="24" id="CFb-fd-ubf"/>
                             <constraint firstItem="Wol-sx-K7a" firstAttribute="centerX" secondItem="75x-hB-b3v" secondAttribute="centerX" id="Huc-TB-BkR"/>
                             <constraint firstAttribute="bottom" secondItem="W9c-Gg-veJ" secondAttribute="bottom" constant="16" id="Li7-fA-cKy"/>
-                            <constraint firstAttribute="trailing" secondItem="saK-eH-dzW" secondAttribute="trailing" id="W76-Ug-zLd"/>
                             <constraint firstItem="Wol-sx-K7a" firstAttribute="centerY" secondItem="75x-hB-b3v" secondAttribute="centerY" id="ZYK-RP-cx2"/>
                             <constraint firstItem="Aaq-uW-sX7" firstAttribute="top" secondItem="W9c-Gg-veJ" secondAttribute="top" id="a81-FD-F9y"/>
                             <constraint firstItem="vT5-6S-UTW" firstAttribute="leading" secondItem="75x-hB-b3v" secondAttribute="leading" id="bjE-73-Gct"/>
                             <constraint firstAttribute="bottom" secondItem="vT5-6S-UTW" secondAttribute="bottom" id="fhr-Jr-BHz"/>
-                            <constraint firstAttribute="bottom" secondItem="saK-eH-dzW" secondAttribute="bottom" id="jMP-GB-EOC"/>
-                            <constraint firstItem="saK-eH-dzW" firstAttribute="top" secondItem="9i0-fu-tQr" secondAttribute="top" id="zMf-LH-vqf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="9i0-fu-tQr"/>
                     </view>
@@ -293,12 +286,12 @@ Position Estimation</string>
                         <outlet property="lookAtPositionXLabel" destination="zjQ-Le-hMK" id="SFk-Hq-X2t"/>
                         <outlet property="lookAtPositionYLabel" destination="5nW-i0-8sr" id="dIT-1O-eR5"/>
                         <outlet property="sceneView" destination="W9c-Gg-veJ" id="MwD-uf-Osc"/>
-                        <outlet property="webView" destination="saK-eH-dzW" id="phT-GD-Fie"/>
+                        <outlet property="vid" destination="SL3-r8-3xV" id="sf9-jC-G7t"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="118" y="107"/>
+            <point key="canvasLocation" x="165.59999999999999" y="71.674876847290648"/>
         </scene>
         <!--Video View Controller-->
         <scene sceneID="fWw-nc-rBl">
@@ -323,7 +316,34 @@ Position Estimation</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fIL-Z8-xIJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="56.799999999999997" y="1163.0541871921182"/>
+            <point key="canvasLocation" x="-690" y="879"/>
+        </scene>
+        <!--Post View Controller-->
+        <scene sceneID="53f-4b-15I">
+            <objects>
+                <viewController storyboardIdentifier="PostViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="dII-UG-YfO" customClass="PostViewController" customModule="Eyes_Tracking" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ze8-6P-UzV">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QNA-sE-zkt">
+                                <rect key="frame" x="159" y="129" width="57" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="QE1-se-OBr"/>
+                    </view>
+                    <connections>
+                        <outlet property="usernameLabel" destination="QNA-sE-zkt" id="enb-qL-uBG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nz6-ch-6Ks" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="165.59999999999999" y="975.3694581280788"/>
         </scene>
     </scenes>
     <resources>
