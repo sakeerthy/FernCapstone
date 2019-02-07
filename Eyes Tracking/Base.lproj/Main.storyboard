@@ -104,11 +104,12 @@
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="This application uses eye tracking capabilities to collect and analyze data gathered from your eye movements" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ts1-Vr-afl">
                                 <rect key="frame" x="44" y="387" width="287" height="128"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="287" id="PM4-sJ-KFe"/>
                                     <constraint firstAttribute="height" constant="128" id="qme-9D-zvh"/>
                                 </constraints>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -120,7 +121,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <state key="normal" title="Begin Assessment">
-                                    <color key="titleColor" red="0.22333682939999999" green="0.50400995579999996" blue="0.14129961860000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <color key="titleColor" red="0.54117647059999996" green="0.74117647060000003" blue="0.070588235289999995" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="beginBtn:" destination="ZDe-N9-4ks" eventType="touchUpInside" id="6z3-nJ-NnA"/>
@@ -136,25 +137,26 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <state key="normal" title="Click to Begin">
-                                    <color key="titleColor" red="0.22333682939999999" green="0.50400995579999996" blue="0.14129961860000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <color key="titleColor" red="0.54117647059999996" green="0.74117647060000003" blue="0.070588235289999995" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="beginBtn:" destination="ZDe-N9-4ks" eventType="touchUpInside" id="dKe-qF-ohp"/>
                                     <segue destination="BV1-FR-VrT" kind="show" identifier="segue" id="YUJ-OA-oGG"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" text="A fern will appear on the screen. Look at it and follow it." textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Y8t-Yv-0dw" userLabel="instructions">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" text="A square will appear on the screen. Look at it and follow it." textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Y8t-Yv-0dw" userLabel="instructions">
                                 <rect key="frame" x="55" y="426" width="276" height="51"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="276" id="umX-Wx-McT"/>
                                     <constraint firstAttribute="height" constant="51" id="vKS-sw-2kV"/>
                                 </constraints>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="fKC-Xl-Dj2" firstAttribute="centerX" secondItem="cDr-eG-BaR" secondAttribute="centerX" id="1Tg-Fi-OfT"/>
                             <constraint firstItem="ts1-Vr-afl" firstAttribute="centerX" secondItem="cDr-eG-BaR" secondAttribute="centerX" id="C3H-va-dit"/>
@@ -209,10 +211,11 @@
                                     <constraint firstAttribute="width" secondItem="W9c-Gg-veJ" secondAttribute="height" multiplier="3:4" id="GTL-RY-QyZ"/>
                                 </constraints>
                             </arscnView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SL3-r8-3xV" customClass="VideoView" customModule="Eyes_Tracking" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="44" width="161" height="128"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SL3-r8-3xV" userLabel="square">
+                                <rect key="frame" x="0.0" y="44" width="75" height="75"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.54117647059999996" green="0.74117647060000003" blue="0.070588235289999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="0.54117647059999996" green="0.74117647060000003" blue="0.070588235289999995" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wol-sx-K7a">
                                 <rect key="frame" x="123.66666666666669" y="342" width="128" height="128"/>
@@ -336,7 +339,9 @@ Position Estimation</string>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FTs-JG-qUP">
                                 <rect key="frame" x="169" y="572" width="37" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Done"/>
+                                <state key="normal" title="Done">
+                                    <color key="titleColor" red="0.54117647059999996" green="0.74117647060000003" blue="0.070588235289999995" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <segue destination="dII-UG-YfO" kind="show" id="2dt-8u-Joa"/>
                                 </connections>
@@ -364,12 +369,12 @@ Position Estimation</string>
                         <outlet property="lookAtPositionXLabel" destination="zjQ-Le-hMK" id="SFk-Hq-X2t"/>
                         <outlet property="lookAtPositionYLabel" destination="5nW-i0-8sr" id="dIT-1O-eR5"/>
                         <outlet property="sceneView" destination="W9c-Gg-veJ" id="MwD-uf-Osc"/>
-                        <outlet property="vid" destination="SL3-r8-3xV" id="sf9-jC-G7t"/>
+                        <outlet property="square" destination="SL3-r8-3xV" id="A1I-K6-9iJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3055" y="92"/>
+            <point key="canvasLocation" x="3053.5999999999999" y="91.625615763546804"/>
         </scene>
         <!--Patient Info View Controller-->
         <scene sceneID="fWw-nc-rBl">

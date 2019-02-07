@@ -6,7 +6,8 @@ import WebKit
 
 class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
 
-    @IBOutlet weak var vid: VideoView!
+    @IBOutlet weak var square: UIView!
+    
     @IBOutlet weak var webView: WKWebView!
     @IBOutlet var sceneView: ARSCNView!
     @IBOutlet weak var eyePositionIndicatorView: UIView!
@@ -76,7 +77,6 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         //webView.load(URLRequest(url: URL(string: "https://www.apple.com")!))
 
         // Setup Design Elements
@@ -122,10 +122,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
 
     override func viewDidAppear(_ animated: Bool){
         super.viewDidAppear(animated)
-        vid.configure(url: "https://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4")
-        vid.isLoop = true
-        vid.play()
-        animation(viewAnimation: vid)
+        animation(viewAnimation: square)
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 3.0, execute: {
             let PostViewController = self.storyboard?.instantiateViewController(withIdentifier: "PostViewController") as! PostViewController
@@ -212,6 +209,8 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
 
             // Update distance label value
             self.distanceLabel.text = "\(Int(round(distance * 100))) cm"
+            
+
 
         }
 
@@ -227,25 +226,29 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
         update(withFaceAnchor: faceAnchor)
     }
 
-    func animation(viewAnimation: VideoView) {
-        VideoView.animate(withDuration: 10, animations: {
-            viewAnimation.frame.origin.x = +viewAnimation.frame.width*1.3
+    func animation(viewAnimation: UIView) {
+        UIView.animate(withDuration: 10, animations: {
+            viewAnimation.frame.origin.x = +viewAnimation.frame.width*4
+            let squarePos = self.square.layer.presentation()?.frame
+            let squareX = squarePos?.midX
+            let squareY = squarePos?.midY
+            print("SquareX: ", squareX, " SquareY: ", squareY)
         }) { (_) in
-            VideoView.animate(withDuration: 10, delay: 1, options: [.curveEaseIn], animations: {
-                viewAnimation.frame.origin.y += viewAnimation.frame.width*2
+            UIView.animate(withDuration: 10, delay: 1, options: [.curveEaseIn], animations: {
+                viewAnimation.frame.origin.y += viewAnimation.frame.width*6
             }) { (_) in
-                VideoView.animate(withDuration: 10, delay: 1, options: [.curveEaseIn], animations: {
-                    viewAnimation.frame.origin.x -= viewAnimation.frame.width*1.3
+                UIView.animate(withDuration: 10, delay: 1, options: [.curveEaseIn], animations: {
+                    viewAnimation.frame.origin.x -= viewAnimation.frame.width*4
                 }) { (_) in
-                    VideoView.animate(withDuration: 10, delay: 1, options: [.curveEaseIn], animations: {
-                        viewAnimation.frame.origin.y -= viewAnimation.frame.width*2
+                    UIView.animate(withDuration: 10, delay: 1, options: [.curveEaseIn], animations: {
+                        viewAnimation.frame.origin.y -= viewAnimation.frame.width*6
                     }) { (_) in
                     }
                 }
             }
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 43.0, execute: {
-            self.animation(viewAnimation: self.vid)
+            self.animation(viewAnimation: self.square)
         })
     }
 
@@ -259,3 +262,9 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
         }
     }
 }
+
+//        let squarePos = self.square.layer.presentation()?.frame
+//        let squareX = squarePos?.midX
+//        let squareY = squarePos?.midY
+//        print("SquareX: ", squareX, " SquareY: ", squareY)
+
