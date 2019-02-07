@@ -11,6 +11,8 @@
 		018D03B921B076BD007DA264 /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018D03B821B076BD007DA264 /* VideoView.swift */; };
 		018D03BD21B4B096007DA264 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018D03BC21B4B096007DA264 /* PostViewController.swift */; };
 		1174DA0B21AF374F00DB84EE /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1174DA0A21AF374F00DB84EE /* HomeViewController.swift */; };
+		A5CCA9D39A30375F74F15F10 /* Pods_Eyes_Tracking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3913DCAA6AC864D4E1A92B1 /* Pods_Eyes_Tracking.framework */; };
+		B5DA3339220BAD06001A6E23 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B5DA3338220BAD06001A6E23 /* GoogleService-Info.plist */; };
 		D0D25B8920C80F5500A25627 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D25B8820C80F5500A25627 /* Extensions.swift */; };
 		D0E5847A20C806050052967A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E5847920C806050052967A /* AppDelegate.swift */; };
 		D0E5847E20C806050052967A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E5847D20C806050052967A /* ViewController.swift */; };
@@ -24,6 +26,10 @@
 		018D03B821B076BD007DA264 /* VideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoView.swift; sourceTree = "<group>"; };
 		018D03BC21B4B096007DA264 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		1174DA0A21AF374F00DB84EE /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		435AB6B55AE3C00BD0AF3276 /* Pods-Eyes Tracking.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Eyes Tracking.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Eyes Tracking/Pods-Eyes Tracking.debug.xcconfig"; sourceTree = "<group>"; };
+		4FC8B2C292B2243193E2815B /* Pods-Eyes Tracking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Eyes Tracking.release.xcconfig"; path = "Pods/Target Support Files/Pods-Eyes Tracking/Pods-Eyes Tracking.release.xcconfig"; sourceTree = "<group>"; };
+		B5DA3338220BAD06001A6E23 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C3913DCAA6AC864D4E1A92B1 /* Pods_Eyes_Tracking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Eyes_Tracking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0D25B8820C80F5500A25627 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D0E5847620C806050052967A /* Eyes Tracking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Eyes Tracking.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0E5847920C806050052967A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -39,17 +45,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5CCA9D39A30375F74F15F10 /* Pods_Eyes_Tracking.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8FFBD974356E79C8F70A917D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				435AB6B55AE3C00BD0AF3276 /* Pods-Eyes Tracking.debug.xcconfig */,
+				4FC8B2C292B2243193E2815B /* Pods-Eyes Tracking.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		BDCC4F5275510168205C3E1A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C3913DCAA6AC864D4E1A92B1 /* Pods_Eyes_Tracking.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D0E5846D20C806050052967A = {
 			isa = PBXGroup;
 			children = (
 				D0E5847820C806050052967A /* Eyes Tracking */,
 				D0E5847720C806050052967A /* Products */,
+				8FFBD974356E79C8F70A917D /* Pods */,
+				BDCC4F5275510168205C3E1A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -68,6 +94,7 @@
 				D0E5847D20C806050052967A /* ViewController.swift */,
 				1174DA0A21AF374F00DB84EE /* HomeViewController.swift */,
 				D0D25B8820C80F5500A25627 /* Extensions.swift */,
+				B5DA3338220BAD06001A6E23 /* GoogleService-Info.plist */,
 				018D03B621B075C7007DA264 /* VideoViewController.swift */,
 				018D03B821B076BD007DA264 /* VideoView.swift */,
 				018D03BC21B4B096007DA264 /* PostViewController.swift */,
@@ -86,9 +113,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D0E5848A20C806060052967A /* Build configuration list for PBXNativeTarget "Eyes Tracking" */;
 			buildPhases = (
+				A3B1A1C672D08D67C6174096 /* [CP] Check Pods Manifest.lock */,
 				D0E5847220C806050052967A /* Sources */,
 				D0E5847320C806050052967A /* Frameworks */,
 				D0E5847420C806050052967A /* Resources */,
+				E67ABC11238E9BBC415B56E0 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -138,12 +167,62 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0E5848620C806050052967A /* LaunchScreen.storyboard in Resources */,
+				B5DA3339220BAD06001A6E23 /* GoogleService-Info.plist in Resources */,
 				D0E5848320C806050052967A /* Assets.xcassets in Resources */,
 				D0E5848120C806050052967A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A3B1A1C672D08D67C6174096 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Eyes Tracking-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E67ABC11238E9BBC415B56E0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Eyes Tracking/Pods-Eyes Tracking-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Eyes Tracking/Pods-Eyes Tracking-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D0E5847220C806050052967A /* Sources */ = {
@@ -298,6 +377,7 @@
 		};
 		D0E5848B20C806060052967A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 435AB6B55AE3C00BD0AF3276 /* Pods-Eyes Tracking.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
@@ -317,6 +397,7 @@
 		};
 		D0E5848C20C806060052967A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4FC8B2C292B2243193E2815B /* Pods-Eyes Tracking.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
