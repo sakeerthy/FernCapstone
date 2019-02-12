@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		018D03B721B075C7007DA264 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018D03B621B075C7007DA264 /* VideoViewController.swift */; };
-		018D03B921B076BD007DA264 /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018D03B821B076BD007DA264 /* VideoView.swift */; };
 		018D03BD21B4B096007DA264 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018D03BC21B4B096007DA264 /* PostViewController.swift */; };
+		1147E57A22037620005FFED5 /* SelectUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1147E57922037620005FFED5 /* SelectUserViewController.swift */; };
+		1147E57C2203855D005FFED5 /* PatientInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1147E57B2203855D005FFED5 /* PatientInfoViewController.swift */; };
+		1147E57E22038EE1005FFED5 /* SelectAssessmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1147E57D22038EE1005FFED5 /* SelectAssessmentViewController.swift */; };
 		1174DA0B21AF374F00DB84EE /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1174DA0A21AF374F00DB84EE /* HomeViewController.swift */; };
 		D0D25B8920C80F5500A25627 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D25B8820C80F5500A25627 /* Extensions.swift */; };
 		D0E5847A20C806050052967A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E5847920C806050052967A /* AppDelegate.swift */; };
@@ -20,9 +21,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		018D03B621B075C7007DA264 /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
-		018D03B821B076BD007DA264 /* VideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoView.swift; sourceTree = "<group>"; };
 		018D03BC21B4B096007DA264 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
+		1147E57922037620005FFED5 /* SelectUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectUserViewController.swift; sourceTree = "<group>"; };
+		1147E57B2203855D005FFED5 /* PatientInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientInfoViewController.swift; sourceTree = "<group>"; };
+		1147E57D22038EE1005FFED5 /* SelectAssessmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAssessmentViewController.swift; sourceTree = "<group>"; };
 		1174DA0A21AF374F00DB84EE /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		D0D25B8820C80F5500A25627 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D0E5847620C806050052967A /* Eyes Tracking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Eyes Tracking.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -68,10 +70,11 @@
 				D0E5847D20C806050052967A /* ViewController.swift */,
 				1174DA0A21AF374F00DB84EE /* HomeViewController.swift */,
 				D0D25B8820C80F5500A25627 /* Extensions.swift */,
-				018D03B621B075C7007DA264 /* VideoViewController.swift */,
-				018D03B821B076BD007DA264 /* VideoView.swift */,
 				018D03BC21B4B096007DA264 /* PostViewController.swift */,
 				D0E5847F20C806050052967A /* Main.storyboard */,
+				1147E57B2203855D005FFED5 /* PatientInfoViewController.swift */,
+				1147E57922037620005FFED5 /* SelectUserViewController.swift */,
+				1147E57D22038EE1005FFED5 /* SelectAssessmentViewController.swift */,
 				D0E5848220C806050052967A /* Assets.xcassets */,
 				D0E5848420C806050052967A /* LaunchScreen.storyboard */,
 				D0E5848720C806050052967A /* Info.plist */,
@@ -150,13 +153,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				018D03B921B076BD007DA264 /* VideoView.swift in Sources */,
 				D0D25B8920C80F5500A25627 /* Extensions.swift in Sources */,
 				018D03BD21B4B096007DA264 /* PostViewController.swift in Sources */,
 				D0E5847E20C806050052967A /* ViewController.swift in Sources */,
 				D0E5847A20C806050052967A /* AppDelegate.swift in Sources */,
-				018D03B721B075C7007DA264 /* VideoViewController.swift in Sources */,
+				1147E57E22038EE1005FFED5 /* SelectAssessmentViewController.swift in Sources */,
 				1174DA0B21AF374F00DB84EE /* HomeViewController.swift in Sources */,
+				1147E57C2203855D005FFED5 /* PatientInfoViewController.swift in Sources */,
+				1147E57A22037620005FFED5 /* SelectUserViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,16 +304,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = N79X9F7U5U;
+				DEVELOPMENT_TEAM = JC4ZPM6YT3;
 				INFOPLIST_FILE = "Eyes Tracking/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.fern.tracking;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fern2.tracking;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -319,16 +324,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = N79X9F7U5U;
+				DEVELOPMENT_TEAM = JC4ZPM6YT3;
 				INFOPLIST_FILE = "Eyes Tracking/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.fern.tracking;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fern2.tracking;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
