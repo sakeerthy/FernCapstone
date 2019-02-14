@@ -18,6 +18,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
     @IBOutlet weak var distanceLabel: UILabel!
 
     var left: [simd_float4x4] = []
+    var right: [simd_float4x4] = []
 
     var faceNode: SCNNode = SCNNode()
 
@@ -152,12 +153,13 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
         eyeRNode.simdTransform = anchor.rightEyeTransform
         eyeLNode.simdTransform = anchor.leftEyeTransform
         left.append(anchor.leftEyeTransform);
+        right.append(anchor.rightEyeTransform);
         var eyeLLookAt = CGPoint()
         var eyeRLookAt = CGPoint()
-        print("Left: ")
-        print(anchor.leftEyeTransform)
-        print("Right: ")
-        print(anchor.rightEyeTransform)
+//        print("Left: ")
+//        print(anchor.leftEyeTransform)
+//        print("Right: ")
+//        print(anchor.rightEyeTransform)
         let heightCompensation: CGFloat = 312
 
         DispatchQueue.main.async {
@@ -189,8 +191,8 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
 
             let smoothEyeLookAtPositionX = self.eyeLookAtPositionXs.average!
             let smoothEyeLookAtPositionY = self.eyeLookAtPositionYs.average!
-            print("Left Eye: X: " + String(Float(eyeLLookAt.x)) + " Y: " + String(Float(eyeLLookAt.y)))
-            print("Right Eye: X: " + String(Float(eyeRLookAt.x)) + " Y: " + String(Float(eyeRLookAt.y)))
+//            print("Left Eye: X: " + String(Float(eyeLLookAt.x)) + " Y: " + String(Float(eyeLLookAt.y)))
+//            print("Right Eye: X: " + String(Float(eyeRLookAt.x)) + " Y: " + String(Float(eyeRLookAt.y)))
 
             // update indicator position
             self.eyePositionIndicatorView.transform = CGAffineTransform(translationX: smoothEyeLookAtPositionX, y: smoothEyeLookAtPositionY)
@@ -232,7 +234,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
             let squarePos = self.square.layer.presentation()?.frame
             let squareX = squarePos?.midX
             let squareY = squarePos?.midY
-            print("SquareX: ", squareX, " SquareY: ", squareY)
+//            print("SquareX: ", squareX, " SquareY: ", squareY)
         }) { (_) in
             UIView.animate(withDuration: 10, delay: 1, options: [.curveEaseIn], animations: {
                 viewAnimation.frame.origin.y += viewAnimation.frame.width*6
@@ -257,8 +259,8 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
         if segue.destination is PostViewController
         {
             let vc = segue.destination as? PostViewController
-//            vc?.username = "Arthur Dent"
-//            vc?.leftData = left
+            vc?.leftData = left
+            vc?.rightData = right
         }
     }
 }
