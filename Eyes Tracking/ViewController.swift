@@ -19,6 +19,10 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
 
     var left: [simd_float4x4] = []
     var right: [simd_float4x4] = []
+    var leftX: [CGFloat] = []
+    var leftY: [CGFloat] = []
+    var rightX: [CGFloat] = []
+    var rightY: [CGFloat] = []
 
     var faceNode: SCNNode = SCNNode()
 
@@ -183,6 +187,10 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
             }
 
             // Add the latest position and keep up to 8 recent position to smooth with.
+            self.leftX.append(eyeLLookAt.x)
+            self.leftY.append(eyeLLookAt.y)
+            self.rightX.append(eyeRLookAt.x)
+            self.rightY.append(eyeRLookAt.y)
             let smoothThresholdNumber: Int = 10
             self.eyeLookAtPositionXs.append((eyeRLookAt.x + eyeLLookAt.x) / 2)
             self.eyeLookAtPositionYs.append(-(eyeRLookAt.y + eyeLLookAt.y) / 2)
@@ -261,6 +269,11 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
             let vc = segue.destination as? PostViewController
             vc?.leftData = left
             vc?.rightData = right
+            vc?.leftX = leftX
+            vc?.leftY = leftY
+            vc?.rightX = rightX
+            vc?.rightY = rightY
+            
         }
     }
 }
