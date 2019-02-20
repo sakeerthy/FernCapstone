@@ -6,7 +6,8 @@ import WebKit
 
 class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
 
-    @IBOutlet weak var vid: VideoView!
+    @IBOutlet weak var square: UIView!
+    
     @IBOutlet weak var webView: WKWebView!
     @IBOutlet var sceneView: ARSCNView!
     @IBOutlet weak var eyePositionIndicatorView: UIView!
@@ -17,6 +18,16 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
     @IBOutlet weak var distanceLabel: UILabel!
 
     var left: [simd_float4x4] = []
+    var right: [simd_float4x4] = []
+    var leftX: [CGFloat] = []
+    var leftY: [CGFloat] = []
+    var rightX: [CGFloat] = []
+    var rightY: [CGFloat] = []
+    var lookAtX: [Any] = []
+    var lookAtY: [Any] = []
+    var distance: [Any] = []
+    var distanceL: [Any] = []
+    var distanceR: [Any] = []
 
     var faceNode: SCNNode = SCNNode()
 
@@ -76,7 +87,6 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         //webView.load(URLRequest(url: URL(string: "https://www.apple.com")!))
 
         // Setup Design Elements
@@ -122,10 +132,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
 
     override func viewDidAppear(_ animated: Bool){
         super.viewDidAppear(animated)
-        vid.configure(url: "https://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4")
-        vid.isLoop = true
-        vid.play()
-        animation(viewAnimation: vid)
+        animation(viewAnimation: square)
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 3.0, execute: {
             let PostViewController = self.storyboard?.instantiateViewController(withIdentifier: "PostViewController") as! PostViewController
@@ -155,12 +162,13 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
         eyeRNode.simdTransform = anchor.rightEyeTransform
         eyeLNode.simdTransform = anchor.leftEyeTransform
         left.append(anchor.leftEyeTransform);
+        right.append(anchor.rightEyeTransform);
         var eyeLLookAt = CGPoint()
         var eyeRLookAt = CGPoint()
-        print("Left: ")
-        print(anchor.leftEyeTransform)
-        print("Right: ")
-        print(anchor.rightEyeTransform)
+//        print("Left: ")
+//        print(anchor.leftEyeTransform)
+//        print("Right: ")
+//        print(anchor.rightEyeTransform)
         let heightCompensation: CGFloat = 312
 
         DispatchQueue.main.async {
@@ -184,6 +192,12 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
             }
 
             // Add the latest position and keep up to 8 recent position to smooth with.
+            self.leftX.append(eyeLLookAt.x)
+            self.leftY.append(eyeLLookAt.y)
+            self.rightX.append(eyeRLookAt.x)
+            self.rightY.append(eyeRLookAt.y)
+            self.lookAtX.append((eyeRLookAt.x + eyeLLookAt.x) / 2)
+            self.lookAtY.append(-(eyeRLookAt.y + eyeLLookAt.y) / 2)
             let smoothThresholdNumber: Int = 10
             self.eyeLookAtPositionXs.append((eyeRLookAt.x + eyeLLookAt.x) / 2)
             self.eyeLookAtPositionYs.append(-(eyeRLookAt.y + eyeLLookAt.y) / 2)
@@ -192,8 +206,8 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
 
             let smoothEyeLookAtPositionX = self.eyeLookAtPositionXs.average!
             let smoothEyeLookAtPositionY = self.eyeLookAtPositionYs.average!
-            print("Left Eye: X: " + String(Float(eyeLLookAt.x)) + " Y: " + String(Float(eyeLLookAt.y)))
-            print("Right Eye: X: " + String(Float(eyeRLookAt.x)) + " Y: " + String(Float(eyeRLookAt.y)))
+//            print("Left Eye: X: " + String(Float(eyeLLookAt.x)) + " Y: " + String(Float(eyeLLookAt.y)))
+//            print("Right Eye: X: " + String(Float(eyeRLookAt.x)) + " Y: " + String(Float(eyeRLookAt.y)))
 
             // update indicator position
             self.eyePositionIndicatorView.transform = CGAffineTransform(translationX: smoothEyeLookAtPositionX, y: smoothEyeLookAtPositionY)
@@ -212,6 +226,10 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
 
             // Update distance label value
             self.distanceLabel.text = "\(Int(round(distance * 100))) cm"
+            
+            self.distanceL.append(distanceL.length())
+            self.distanceR.append(distanceR.length())
+            self.distance.append(distance)
 
         }
 
@@ -227,25 +245,29 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
         update(withFaceAnchor: faceAnchor)
     }
 
-    func animation(viewAnimation: VideoView) {
-        VideoView.animate(withDuration: 10, animations: {
-            viewAnimation.frame.origin.x = +viewAnimation.frame.width*1.3
+    func animation(viewAnimation: UIView) {
+        UIView.animate(withDuration: 10, animations: {
+            viewAnimation.frame.origin.x = +viewAnimation.frame.width*4
+            let squarePos = self.square.layer.presentation()?.frame
+            let squareX = squarePos?.midX
+            let squareY = squarePos?.midY
+//            print("SquareX: ", squareX, " SquareY: ", squareY)
         }) { (_) in
-            VideoView.animate(withDuration: 10, delay: 1, options: [.curveEaseIn], animations: {
-                viewAnimation.frame.origin.y += viewAnimation.frame.width*2
+            UIView.animate(withDuration: 10, delay: 1, options: [.curveEaseIn], animations: {
+                viewAnimation.frame.origin.y += viewAnimation.frame.width*6
             }) { (_) in
-                VideoView.animate(withDuration: 10, delay: 1, options: [.curveEaseIn], animations: {
-                    viewAnimation.frame.origin.x -= viewAnimation.frame.width*1.3
+                UIView.animate(withDuration: 10, delay: 1, options: [.curveEaseIn], animations: {
+                    viewAnimation.frame.origin.x -= viewAnimation.frame.width*4
                 }) { (_) in
-                    VideoView.animate(withDuration: 10, delay: 1, options: [.curveEaseIn], animations: {
-                        viewAnimation.frame.origin.y -= viewAnimation.frame.width*2
+                    UIView.animate(withDuration: 10, delay: 1, options: [.curveEaseIn], animations: {
+                        viewAnimation.frame.origin.y -= viewAnimation.frame.width*6
                     }) { (_) in
                     }
                 }
             }
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 43.0, execute: {
-            self.animation(viewAnimation: self.vid)
+            self.animation(viewAnimation: self.square)
         })
     }
 
@@ -254,8 +276,23 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
         if segue.destination is PostViewController
         {
             let vc = segue.destination as? PostViewController
-//            vc?.username = "Arthur Dent"
-//            vc?.leftData = left
+            vc?.leftData = left
+            vc?.rightData = right
+            vc?.leftX = leftX
+            vc?.leftY = leftY
+            vc?.rightX = rightX
+            vc?.rightY = rightY
+            vc?.lookAtX = lookAtX
+            vc?.lookAtY = lookAtY
+            vc?.distanceL = distanceL
+            vc?.distanceR = distanceR
+            vc?.distance = distance
         }
     }
 }
+
+//        let squarePos = self.square.layer.presentation()?.frame
+//        let squareX = squarePos?.midX
+//        let squareY = squarePos?.midY
+//        print("SquareX: ", squareX, " SquareY: ", squareY)
+

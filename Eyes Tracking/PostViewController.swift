@@ -12,57 +12,48 @@ import ARKit
 class PostViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     var username:String = ""
-//    var leftData:[simd_float4x4] = []
-//    var stringData:[String] = []
-    //var leftData:[simd_float4x4] = []
+    var leftData:[simd_float4x4] = []
+    var rightData:[simd_float4x4] = []
+    var leftX: [CGFloat] = []
+    var leftY: [CGFloat] = []
+    var rightX: [CGFloat] = []
+    var rightY: [CGFloat] = []
+    var lookAtX: [Any] = []
+    var lookAtY: [Any] = []
+    var distanceL: [Any] = []
+    var distanceR: [Any] = []
+    var distance: [Any] = []
+
+    var dummyPatient = "Karen Panetta"
+    var dummyDoctor = "Mingles Chowder"
+    var leftDummyData:[simd_float4x4] = [simd_float4x4([[0.9996633, -0.0025119425, 0.025826829, 0.0], [0.0, 0.99530345, 0.09680419, 0.0], [-0.025948698, -0.09677159, 0.99496835, 0.0], [0.03208242, 0.027041169, 0.02522561, 1.0]]), simd_float4x4([[0.9996633, -0.0025119425, 0.025826829, 0.0], [0.0, 0.99530345, 0.09680419, 0.0], [-0.025948698, -0.09677159, 0.99496835, 0.0], [0.03208242, 0.027041169, 0.02522561, 1.0]])]
+
+    var rightDummyData:[simd_float4x4] = [simd_float4x4([[0.9996633, -0.0025119425, 0.025826829, 0.0], [0.0, 0.99530345, 0.09680419, 0.0], [-0.025948698, -0.09677159, 0.99496835, 0.0], [0.03208242, 0.027041169, 0.02522561, 1.0]]), simd_float4x4([[0.9996633, -0.0025119425, 0.025826829, 0.0], [0.0, 0.99530345, 0.09680419, 0.0], [-0.025948698, -0.09677159, 0.99496835, 0.0], [0.03208242, 0.027041169, 0.02522561, 1.0]])]
+    var leftDummyX: [CGFloat] = [CGFloat(534.6474716905911), CGFloat(0.0)]
+    var leftDummyY: [CGFloat] = [CGFloat(0.0), CGFloat(534.6474716905911)]
+    var rightDummyX: [CGFloat] = [CGFloat(34.6474716905911), CGFloat(0.0)]
+    var rightDummyY: [CGFloat] = [CGFloat(0.0), CGFloat(34.6474716905911)]
+    var lookAtDummyX: [CGFloat] = [CGFloat(114.0807662788729), CGFloat(0.0)]
+    var lookAtDummyY: [CGFloat] = [CGFloat(0.0), CGFloat(114.0807662788729)]
+    var distanceDummyL: [Float] = [0.374566, 0.3792225]
+    var distanceDummyR: [Float] = [0.374566, 0.3792225]
+    var distanceDummy: [Float] = [0.374566, 0.3792225]
+
+
+
 
 //    @IBOutlet weak var simd: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         usernameLabel?.text = "Data"
+        print(type(of: lookAtX[0]))
+        print(lookAtX[0])
+        print(type(of: distanceL[0]))
+        print(distanceL[0])
+        print(type(of: distance[0]))
+        print(distance[0])
     }
-//        dump(leftData)
-//        print(String(leftData[0][0][0]))
-//        for data in leftData {
-//            for col in 0...3 {
-//                for row in 0...3 {
-//                    print(String(data[col][row]), terminator:" ")
-//                }
-//                print("")
-//            }
-//            print("")
-//        }
-//
-//        tableView.delegate = self as? UITableViewDelegate
-//        tableView.dataSource = self as? UITableViewDataSource
-//        // Do any additional setup after loading the view.
-//    }
-//
-//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        return "Data"
-//    }
-//
-//    func numberOfSections(in tableView: UITableView) -> Int {
-//        return 1
-//    }
-//
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return 1
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        // Create an object of the dynamic cell "PlainCell"
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "cellReuseIdentifier", for: indexPath)
-//        // Depending on the section, fill the textLabel with the relevant text
-//        // Fruit Section
-//        cell.textLabel?.text = "hi"
-//
-//
-//        // Return the configured cell
-//        return cell
-//
-//    }
 
 
     /*
