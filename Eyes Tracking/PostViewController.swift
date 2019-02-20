@@ -18,6 +18,11 @@ class PostViewController: UIViewController {
     var leftY: [CGFloat] = []
     var rightX: [CGFloat] = []
     var rightY: [CGFloat] = []
+    var lookAtX: [Any] = []
+    var lookAtY: [Any] = []
+    var distanceL: [Any] = []
+    var distanceR: [Any] = []
+    var distance: [Any] = []
 
     var dummyPatient = "Karen Panetta"
     var dummyDoctor = "Mingles Chowder"
@@ -28,6 +33,11 @@ class PostViewController: UIViewController {
     var leftDummyY: [CGFloat] = [CGFloat(0.0), CGFloat(534.6474716905911)]
     var rightDummyX: [CGFloat] = [CGFloat(34.6474716905911), CGFloat(0.0)]
     var rightDummyY: [CGFloat] = [CGFloat(0.0), CGFloat(34.6474716905911)]
+    var lookAtDummyX: [CGFloat] = [CGFloat(114.0807662788729), CGFloat(0.0)]
+    var lookAtDummyY: [CGFloat] = [CGFloat(0.0), CGFloat(114.0807662788729)]
+    var distanceDummyL: [Float] = [0.374566, 0.3792225]
+    var distanceDummyR: [Float] = [0.374566, 0.3792225]
+    var distanceDummy: [Float] = [0.374566, 0.3792225]
 
 
 
@@ -37,10 +47,12 @@ class PostViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         usernameLabel?.text = "Data"
-        print(type(of: leftX[0]))
-        print(leftY[0])
-        print(rightX[0])
-        print(rightY[0])
+        print(type(of: lookAtX[0]))
+        print(lookAtX[0])
+        print(type(of: distanceL[0]))
+        print(distanceL[0])
+        print(type(of: distance[0]))
+        print(distance[0])
     }
 
 
