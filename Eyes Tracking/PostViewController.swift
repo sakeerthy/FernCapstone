@@ -8,6 +8,8 @@
 
 import UIKit
 import ARKit
+import Firebase
+import FirebaseFirestore
 
 class PostViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
@@ -38,21 +40,28 @@ class PostViewController: UIViewController {
     var distanceDummyL: [Float] = [0.374566, 0.3792225]
     var distanceDummyR: [Float] = [0.374566, 0.3792225]
     var distanceDummy: [Float] = [0.374566, 0.3792225]
+    
 
-
-
-
+    
+    
 //    @IBOutlet weak var simd: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-        usernameLabel?.text = "Data"
-        print(type(of: lookAtX[0]))
-        print(lookAtX[0])
-        print(type(of: distanceL[0]))
-        print(distanceL[0])
-        print(type(of: distance[0]))
-        print(distance[0])
+        usernameLabel?.text = "Suneeth"
+//        print(type(of: lookAtX[0]))
+//        print(lookAtX[0])
+//        print(type(of: distanceL[0]))
+//        print(distanceL[0])
+//        print(type(of: distance[0]))
+//        print(distance[0])
+        
+        let db = Firestore.firestore()
+        
+        db.collection("doctors").document(dummyDoctor).setData([
+            "name": "Mingles Chowder"
+        ])
+        
     }
 
 
