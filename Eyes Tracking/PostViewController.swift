@@ -48,7 +48,7 @@ class PostViewController: UIViewController {
     @IBOutlet weak var usernameLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-        usernameLabel?.text = "Suneeth"
+        usernameLabel?.text = "Data"
 //        print(type(of: lookAtX[0]))
 //        print(lookAtX[0])
 //        print(type(of: distanceL[0]))
@@ -59,7 +59,19 @@ class PostViewController: UIViewController {
         let db = Firestore.firestore()
         
         db.collection("doctors").document(dummyDoctor).setData([
-            "name": "Mingles Chowder"
+            "patientName": dummyPatient,
+            "doctorName": dummyDoctor,
+            "leftX": leftDummyX,
+            "leftY": leftDummyY,
+            "rightX": rightDummyX,
+            "rightY": rightDummyY,
+            "lookAtX": lookAtDummyX,
+            "lookAtY": lookAtDummyY,
+            "distanceL": distanceDummyL,
+            "distanceR": distanceDummyR,
+            "distance": distanceDummy,
+//            "leftData": leftDummyData,
+//            "rightdata": rightDummyData,
         ])
         
     }
