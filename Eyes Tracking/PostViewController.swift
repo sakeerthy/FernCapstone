@@ -41,6 +41,29 @@ class PostViewController: UIViewController {
     var distanceDummyR: [Float] = [0.374566, 0.3792225]
     var distanceDummy: [Float] = [0.374566, 0.3792225]
     
+    func simdTransform(left_simd: [simd_float4x4], right_simd: [simd_float4x4], reference: DocumentReference) -> Void {
+        var counter = -1
+        for element in left_simd {
+            counter += 1
+            let left_name = "left" + String(counter)
+            for index in 0...3 {
+                var col = "col" + String(index)
+                reference.collection("simd").document(left_name).setData([col: [element[index, 0], element[index, 1], element[index, 2], element[index, 3],]], merge: true)              }
+        }
+        counter = -1
+        for element in right_simd {
+            counter += 1
+            let right_name = "right" + String(counter)
+            for index in 0...3 {
+                var col = "col" + String(index)
+                
+                
+                reference.collection("simd").document(right_name).setData([col: [element[index, 0], element[index, 1], element[index, 2], element[index, 3],]], merge: true)
+            }
+        }
+        
+        
+    }
 
     
     
@@ -58,9 +81,9 @@ class PostViewController: UIViewController {
         
         let db = Firestore.firestore()
         
-        db.collection("doctors").document(dummyDoctor).setData([
+        var ref: DocumentReference? = nil
+        ref = db.collection("data").addDocument(data: [
             "patientName": dummyPatient,
-            "doctorName": dummyDoctor,
             "leftX": leftDummyX,
             "leftY": leftDummyY,
             "rightX": rightDummyX,
@@ -70,11 +93,44 @@ class PostViewController: UIViewController {
             "distanceL": distanceDummyL,
             "distanceR": distanceDummyR,
             "distance": distanceDummy,
-//            "leftData": leftDummyData,
-//            "rightdata": rightDummyData,
+            //            "leftData": leftDummyData,
+            //            "rightdata": rightDummyData,
         ])
+        let uuid = NSUUID().uuidString
+        let docRef = db.collection("patients").document(dummyPatient).collection("tests").document("smooth").setData([
+            uuid: ref], merge: true)
         
+        simdTransform(left_simd: leftDummyData, right_simd: rightDummyData, reference: (ref ?? nil)!)
+        
+        
+//        db.collection("patients").document(dummyPatient).collection("tests").document(ref)
+        
+        
+        
+        
+//        print("hi")
+//        docRef.getDocument { (document, error) in
+//            if var document = document, document.exists {
+//                let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
+////                let newDoc = document.get("tests").data().append(ref)
+////                db.collection("patients").document(dummyPatient).addDocument(data: [
+////                    "tests": newDoc])
+////                print(document.get("tests"))
+//                var doc = document.data()
+//                print(doc)
+////                print(dataDescription)
+//                print("hi2")
+//            } else {
+//                print("Document does not exist")
+//            }
+//        }
+        
+
+//        db.collection("patients").document(dummyPatient).collection("tests").addDocument(data: [: ref])
     }
+    
+
+
 
 
     /*
