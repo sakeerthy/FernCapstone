@@ -18,6 +18,7 @@ class PatientInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.DoctorTextField.delegate = self as? UITextFieldDelegate
+        print(PatientTextField)
         
     }
     

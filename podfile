@@ -8,4 +8,5 @@ target 'Eyes Tracking' do
   # Pods for Eyes Tracking
 pod 'Firebase/Core'
 pod 'Firebase/Database'
+pod 'Firebase/Firestore'
 end
