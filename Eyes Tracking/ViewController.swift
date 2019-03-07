@@ -5,7 +5,7 @@ import ARKit
 import WebKit
 
 class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
-
+    var isSmooth: Bool = true
     @IBOutlet weak var square: UIView!
     
     @IBOutlet weak var webView: WKWebView!
@@ -229,29 +229,56 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
     }
 
     func animation(viewAnimation: UIView) {
-        UIView.animate(withDuration: 10, animations: {
-            viewAnimation.frame.origin.x = +viewAnimation.frame.width*4
-            let squarePos = self.square.layer.presentation()?.frame
-            let squareX = squarePos?.midX
-            let squareY = squarePos?.midY
-//            print("SquareX: ", squareX, " SquareY: ", squareY)
-        }) { (_) in
-            UIView.animate(withDuration: 10, delay: 1, options: [.curveEaseIn], animations: {
-                viewAnimation.frame.origin.y += viewAnimation.frame.width*6
+        if (isSmooth) {
+            UIView.animate(withDuration: 10, animations: {
+                viewAnimation.frame.origin.x = +viewAnimation.frame.width*4
+                let squarePos = self.square.layer.presentation()?.frame
+                let squareX = squarePos?.midX
+                let squareY = squarePos?.midY
+    //            print("SquareX: ", squareX, " SquareY: ", squareY)
             }) { (_) in
                 UIView.animate(withDuration: 10, delay: 1, options: [.curveEaseIn], animations: {
-                    viewAnimation.frame.origin.x -= viewAnimation.frame.width*4
+                    viewAnimation.frame.origin.y += viewAnimation.frame.width*6
                 }) { (_) in
                     UIView.animate(withDuration: 10, delay: 1, options: [.curveEaseIn], animations: {
-                        viewAnimation.frame.origin.y -= viewAnimation.frame.width*6
+                        viewAnimation.frame.origin.x -= viewAnimation.frame.width*4
                     }) { (_) in
+                        UIView.animate(withDuration: 10, delay: 1, options: [.curveEaseIn], animations: {
+                            viewAnimation.frame.origin.y -= viewAnimation.frame.width*6
+                        }) { (true) in
+                            self.performSegue(withIdentifier: "postSegue", sender: nil)
+                        }
                     }
                 }
             }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 43.0, execute: {
+                self.animation(viewAnimation: self.square)
+            })
+        } else {
+//            UIView.animate(withDuration: 10, animations: {
+//                viewAnimation.frame.origin.x = +viewAnimation.frame.width*4
+//                let squarePos = self.square.layer.presentation()?.frame
+//                let squareX = squarePos?.midX
+//                let squareY = squarePos?.midY
+//                //            print("SquareX: ", squareX, " SquareY: ", squareY)
+//            }) { (_) in
+//                UIView.animate(withDuration: 10, delay: 1, options: [.curveEaseIn], animations: {
+//                    viewAnimation.frame.origin.y += viewAnimation.frame.width*6
+//                }) { (_) in
+//                    UIView.animate(withDuration: 10, delay: 1, options: [.curveEaseIn], animations: {
+//                        viewAnimation.frame.origin.x -= viewAnimation.frame.width*4
+//                    }) { (_) in
+//                        UIView.animate(withDuration: 10, delay: 1, options: [.curveEaseIn], animations: {
+//                            viewAnimation.frame.origin.y -= viewAnimation.frame.width*6
+//                        }) { (_) in
+//                        }
+//                    }
+//                }
+//            }
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 43.0, execute: {
+//                self.animation(viewAnimation: self.square)
+//            })
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 43.0, execute: {
-            self.animation(viewAnimation: self.square)
-        })
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)

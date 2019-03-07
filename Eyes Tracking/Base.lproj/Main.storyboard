@@ -102,7 +102,7 @@
                                     <constraint firstAttribute="width" constant="224" id="paV-rw-C2O"/>
                                 </constraints>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="This application uses eye tracking capabilities to collect and analyze data gathered from your eye movements" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ts1-Vr-afl">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="This application uses eye tracking capabilities to collect and analyze data gathered from your eye movements" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ts1-Vr-afl">
                                 <rect key="frame" x="44" y="387" width="287" height="128"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -144,7 +144,7 @@
                                     <segue destination="BV1-FR-VrT" kind="show" identifier="segue" id="YUJ-OA-oGG"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" text="A square will appear on the screen. Look at it and follow it." textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Y8t-Yv-0dw" userLabel="instructions">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" text="A square will appear on the screen. Look at it and follow it." textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Y8t-Yv-0dw" userLabel="instructions">
                                 <rect key="frame" x="55" y="426" width="276" height="51"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -343,7 +343,7 @@ Position Estimation</string>
                                     <color key="titleColor" red="0.54117647059999996" green="0.74117647060000003" blue="0.070588235289999995" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="dII-UG-YfO" kind="show" id="2dt-8u-Joa"/>
+                                    <segue destination="dII-UG-YfO" kind="show" identifier="postSegue" id="2dt-8u-Joa"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -491,6 +491,9 @@ Position Estimation</string>
                                 <state key="normal" title="Saccadic Test">
                                     <color key="titleColor" red="0.54117647059999996" green="0.74117647060000003" blue="0.070588235289999995" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <segue destination="8zP-Qc-TMg" kind="show" id="w64-j4-g9S"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rTX-Y3-pGN">
                                 <rect key="frame" x="99" y="304" width="182" height="38"/>
@@ -512,8 +515,119 @@ Position Estimation</string>
             </objects>
             <point key="canvasLocation" x="1366" y="93"/>
         </scene>
+        <!--Saccade View Controller-->
+        <scene sceneID="1hD-WA-VhZ">
+            <objects>
+                <viewController id="8zP-Qc-TMg" customClass="SaccadeViewController" customModule="Eyes_Tracking" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tPl-hj-UPk">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fern" translatesAutoresizingMaskIntoConstraints="NO" id="emE-o2-CGm">
+                                <rect key="frame" x="75" y="126" width="224" height="243"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="224" id="6Ij-pd-OiG"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="224" id="QeE-gS-kES"/>
+                                    <constraint firstAttribute="height" constant="243" id="bDK-us-UNu"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="243" id="sLf-ht-48y"/>
+                                </constraints>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="This application uses eye tracking capabilities to collect and analyze data gathered from your eye movements" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="CuG-Pw-eIc">
+                                <rect key="frame" x="44" y="377" width="287" height="128"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="287" id="YM8-KB-29P"/>
+                                    <constraint firstAttribute="width" constant="287" id="dw8-9c-3tH"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="128" id="ebw-Em-bBT"/>
+                                    <constraint firstAttribute="height" constant="128" id="tDi-nB-S3h"/>
+                                </constraints>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZpX-J2-VBi">
+                                <rect key="frame" x="103" y="513" width="169" height="38"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="169" id="6iH-r7-qgX"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="169" id="D6V-dj-fYH"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="38" id="ILE-fu-hFR"/>
+                                    <constraint firstAttribute="height" constant="38" id="rxl-ge-gmM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <state key="normal" title="Begin Assessment">
+                                    <color key="titleColor" red="0.54117647059999996" green="0.74117647060000003" blue="0.070588235289999995" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="beginBtn:" destination="ZDe-N9-4ks" eventType="touchUpInside" id="BlY-6j-Zeu"/>
+                                    <action selector="beginPressed:" destination="8zP-Qc-TMg" eventType="touchUpInside" id="e8V-GX-MxB"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="A square will appear on the screen. Look at it and follow it." textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="aSt-OO-MPz" userLabel="instructions">
+                                <rect key="frame" x="55" y="401" width="276" height="51"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="51" id="BjY-9r-wm6"/>
+                                    <constraint firstAttribute="width" constant="276" id="hqD-g6-hmj"/>
+                                </constraints>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gwC-Tk-b7I">
+                                <rect key="frame" x="103" y="460" width="169" height="38"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="169" id="8ZA-if-Hcj"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="125" id="fM3-4A-Tda"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="38" id="pQk-MR-xm4"/>
+                                    <constraint firstAttribute="height" constant="38" id="r65-Tn-Qtn"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <state key="normal" title="Click to Begin">
+                                    <color key="titleColor" red="0.54117647059999996" green="0.74117647060000003" blue="0.070588235289999995" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="beginBtn:" destination="ZDe-N9-4ks" eventType="touchUpInside" id="qfg-bI-6lG"/>
+                                    <segue destination="BV1-FR-VrT" kind="show" id="Bnr-QH-qFj"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ZpX-J2-VBi" firstAttribute="leading" secondItem="3eo-WI-Ce1" secondAttribute="leading" constant="103" id="3cx-m3-5pP"/>
+                            <constraint firstItem="3eo-WI-Ce1" firstAttribute="bottom" secondItem="emE-o2-CGm" secondAttribute="bottom" constant="409" id="5LF-ji-vh6"/>
+                            <constraint firstItem="aSt-OO-MPz" firstAttribute="leading" secondItem="3eo-WI-Ce1" secondAttribute="leading" constant="55" id="MBW-aI-Ey9"/>
+                            <constraint firstItem="3eo-WI-Ce1" firstAttribute="bottom" secondItem="CuG-Pw-eIc" secondAttribute="bottom" constant="273" id="PKu-Qb-ula"/>
+                            <constraint firstItem="3eo-WI-Ce1" firstAttribute="trailing" secondItem="emE-o2-CGm" secondAttribute="trailing" constant="76" id="UHR-R0-hUI"/>
+                            <constraint firstItem="CuG-Pw-eIc" firstAttribute="leading" secondItem="3eo-WI-Ce1" secondAttribute="leading" constant="44" id="VCn-Dp-97k"/>
+                            <constraint firstItem="3eo-WI-Ce1" firstAttribute="trailing" secondItem="ZpX-J2-VBi" secondAttribute="trailing" constant="103" id="WXQ-p3-7kj"/>
+                            <constraint firstItem="emE-o2-CGm" firstAttribute="leading" secondItem="3eo-WI-Ce1" secondAttribute="leading" constant="75" id="bp5-Pa-RJs"/>
+                            <constraint firstItem="ZpX-J2-VBi" firstAttribute="top" secondItem="aSt-OO-MPz" secondAttribute="bottom" constant="61" id="cJL-54-kSC"/>
+                            <constraint firstItem="3eo-WI-Ce1" firstAttribute="bottom" secondItem="ZpX-J2-VBi" secondAttribute="bottom" constant="227" id="coK-eA-hdK"/>
+                            <constraint firstItem="3eo-WI-Ce1" firstAttribute="trailing" secondItem="aSt-OO-MPz" secondAttribute="trailing" constant="44" id="iRY-JJ-iMa"/>
+                            <constraint firstItem="3eo-WI-Ce1" firstAttribute="trailing" secondItem="gwC-Tk-b7I" secondAttribute="trailing" constant="103" id="oay-nv-42U"/>
+                            <constraint firstItem="3eo-WI-Ce1" firstAttribute="trailing" secondItem="CuG-Pw-eIc" secondAttribute="trailing" constant="44" id="qA3-As-UKR"/>
+                            <constraint firstItem="gwC-Tk-b7I" firstAttribute="leading" secondItem="3eo-WI-Ce1" secondAttribute="leading" constant="103" id="rIP-pt-uFY"/>
+                            <constraint firstItem="ZpX-J2-VBi" firstAttribute="top" secondItem="gwC-Tk-b7I" secondAttribute="bottom" constant="15" id="vKA-up-1r8"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="3eo-WI-Ce1"/>
+                    </view>
+                    <connections>
+                        <outlet property="beginBtn" destination="ZpX-J2-VBi" id="j98-Z5-CcN"/>
+                        <outlet property="desc" destination="CuG-Pw-eIc" id="AWL-ve-9Tl"/>
+                        <outlet property="instruc" destination="aSt-OO-MPz" id="Bx7-Yu-jjO"/>
+                        <outlet property="logo" destination="emE-o2-CGm" id="LMu-Yu-W2K"/>
+                        <outlet property="start" destination="gwC-Tk-b7I" id="L7d-Zs-aDr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gbz-AB-Nof" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1366" y="856"/>
+        </scene>
     </scenes>
     <resources>
         <image name="fern" width="400" height="400"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Bnr-QH-qFj"/>
+    </inferredMetricsTieBreakers>
 </document>
