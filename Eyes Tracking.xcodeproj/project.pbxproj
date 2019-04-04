@@ -8,11 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		018D03BD21B4B096007DA264 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018D03BC21B4B096007DA264 /* PostViewController.swift */; };
-		113AB0152230326100A10EFE /* SaccadeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113AB0142230326100A10EFE /* SaccadeViewController.swift */; };
+		11083CDD2255C850008A04FC /* SaccadeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11083CDC2255C850008A04FC /* SaccadeViewController.swift */; };
+		11083CDF2255C957008A04FC /* SmoothViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11083CDE2255C957008A04FC /* SmoothViewController.swift */; };
+		11083CE3225695BF008A04FC /* DoctorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11083CE2225695BF008A04FC /* DoctorViewController.swift */; };
 		1147E57A22037620005FFED5 /* SelectUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1147E57922037620005FFED5 /* SelectUserViewController.swift */; };
 		1147E57C2203855D005FFED5 /* PatientInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1147E57B2203855D005FFED5 /* PatientInfoViewController.swift */; };
 		1147E57E22038EE1005FFED5 /* SelectAssessmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1147E57D22038EE1005FFED5 /* SelectAssessmentViewController.swift */; };
-		1174DA0B21AF374F00DB84EE /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1174DA0A21AF374F00DB84EE /* HomeViewController.swift */; };
 		D0D25B8920C80F5500A25627 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D25B8820C80F5500A25627 /* Extensions.swift */; };
 		D0E5847A20C806050052967A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E5847920C806050052967A /* AppDelegate.swift */; };
 		D0E5847E20C806050052967A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E5847D20C806050052967A /* ViewController.swift */; };
@@ -23,11 +24,12 @@
 
 /* Begin PBXFileReference section */
 		018D03BC21B4B096007DA264 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
-		113AB0142230326100A10EFE /* SaccadeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaccadeViewController.swift; sourceTree = "<group>"; };
+		11083CDC2255C850008A04FC /* SaccadeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaccadeViewController.swift; sourceTree = "<group>"; };
+		11083CDE2255C957008A04FC /* SmoothViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmoothViewController.swift; sourceTree = "<group>"; };
+		11083CE2225695BF008A04FC /* DoctorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorViewController.swift; sourceTree = "<group>"; };
 		1147E57922037620005FFED5 /* SelectUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectUserViewController.swift; sourceTree = "<group>"; };
 		1147E57B2203855D005FFED5 /* PatientInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientInfoViewController.swift; sourceTree = "<group>"; };
 		1147E57D22038EE1005FFED5 /* SelectAssessmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAssessmentViewController.swift; sourceTree = "<group>"; };
-		1174DA0A21AF374F00DB84EE /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		D0D25B8820C80F5500A25627 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D0E5847620C806050052967A /* Eyes Tracking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Eyes Tracking.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0E5847920C806050052967A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -70,11 +72,12 @@
 			children = (
 				D0E5847920C806050052967A /* AppDelegate.swift */,
 				D0E5847D20C806050052967A /* ViewController.swift */,
-				1174DA0A21AF374F00DB84EE /* HomeViewController.swift */,
 				D0D25B8820C80F5500A25627 /* Extensions.swift */,
 				018D03BC21B4B096007DA264 /* PostViewController.swift */,
 				D0E5847F20C806050052967A /* Main.storyboard */,
-				113AB0142230326100A10EFE /* SaccadeViewController.swift */,
+				11083CE2225695BF008A04FC /* DoctorViewController.swift */,
+				11083CDE2255C957008A04FC /* SmoothViewController.swift */,
+				11083CDC2255C850008A04FC /* SaccadeViewController.swift */,
 				1147E57B2203855D005FFED5 /* PatientInfoViewController.swift */,
 				1147E57922037620005FFED5 /* SelectUserViewController.swift */,
 				1147E57D22038EE1005FFED5 /* SelectAssessmentViewController.swift */,
@@ -156,15 +159,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				113AB0152230326100A10EFE /* SaccadeViewController.swift in Sources */,
 				D0D25B8920C80F5500A25627 /* Extensions.swift in Sources */,
+				11083CDF2255C957008A04FC /* SmoothViewController.swift in Sources */,
+				11083CDD2255C850008A04FC /* SaccadeViewController.swift in Sources */,
 				018D03BD21B4B096007DA264 /* PostViewController.swift in Sources */,
 				D0E5847E20C806050052967A /* ViewController.swift in Sources */,
 				D0E5847A20C806050052967A /* AppDelegate.swift in Sources */,
 				1147E57E22038EE1005FFED5 /* SelectAssessmentViewController.swift in Sources */,
-				1174DA0B21AF374F00DB84EE /* HomeViewController.swift in Sources */,
 				1147E57C2203855D005FFED5 /* PatientInfoViewController.swift in Sources */,
 				1147E57A22037620005FFED5 /* SelectUserViewController.swift in Sources */,
+				11083CE3225695BF008A04FC /* DoctorViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

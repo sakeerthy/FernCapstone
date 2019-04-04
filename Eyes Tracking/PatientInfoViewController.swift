@@ -11,6 +11,7 @@ import UIKit
 
 class PatientInfoViewController: UIViewController {
 
+    @IBOutlet weak var submit: UIButton!
     @IBOutlet weak var PatientTextField: UITextField!
     
     @IBOutlet weak var DoctorTextField: UITextField!
@@ -18,7 +19,9 @@ class PatientInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.DoctorTextField.delegate = self as? UITextFieldDelegate
-        
+        self.submit.layer.borderWidth = 0.5
+        self.submit.layer.borderColor = UIColor.white.cgColor
+        self.submit.layer.cornerRadius = self.submit.frame.height / 4
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

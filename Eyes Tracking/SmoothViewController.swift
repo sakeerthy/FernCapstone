@@ -1,5 +1,5 @@
 //
-//  SaccadeViewController.swift
+//  SmoothViewController.swift
 //  Eyes Tracking
 //
 //  Created by Romy Aboudarham on 4/4/19.
@@ -8,34 +8,15 @@
 
 import UIKit
 
-class SaccadeViewController: UIViewController {
+class SmoothViewController: UIViewController {
 
     @IBOutlet weak var clickButton: UIButton!
-    @IBOutlet weak var instText: UITextView!
-    @IBOutlet weak var comfyText: UITextView!
-    @IBOutlet weak var testTitle: UITextView!
-    
-
-    @IBOutlet weak var contButton: UIButton!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         self.clickButton.layer.borderWidth = 0.5
         self.clickButton.layer.borderColor = UIColor.white.cgColor
         self.clickButton.layer.cornerRadius = self.clickButton.frame.height / 4
-        
-    }
- 
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-    {
-        if segue.destination is ViewController
-        {
-            let vc = segue.destination as? ViewController
-            vc?.isSmooth = false
-        }
+        // Do any additional setup after loading the view.
     }
     
 

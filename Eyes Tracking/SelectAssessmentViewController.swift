@@ -10,10 +10,17 @@ import UIKit
 
 class SelectAssessmentViewController: UIViewController {
 
+    @IBOutlet weak var saccButton: UIButton!
+    @IBOutlet weak var smoothButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        self.saccButton.layer.borderWidth = 0.5
+        self.smoothButton.layer.borderWidth = 0.5
+        self.saccButton.layer.borderColor = UIColor.white.cgColor
+        self.smoothButton.layer.borderColor = UIColor.white.cgColor
+        self.saccButton.layer.cornerRadius = self.saccButton.frame.height / 4
+        self.smoothButton.layer.cornerRadius = self.smoothButton.frame.height / 4
     }
     
 

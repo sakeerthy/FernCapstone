@@ -125,11 +125,12 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
         super.viewDidAppear(animated)
         animation(viewAnimation: square)
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0, execute: {
-            let PostViewController = self.storyboard?.instantiateViewController(withIdentifier: "PostViewController") as! PostViewController
-
-            self.navigationController?.pushViewController(PostViewController, animated: true)
-        })
+        // AUTO END
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 30.0, execute: {
+//            let PostViewController = self.storyboard?.instantiateViewController(withIdentifier: "PostViewController") as! PostViewController
+//
+//            self.navigationController?.pushViewController(PostViewController, animated: true)
+//        })
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -231,7 +232,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
     func animation(viewAnimation: UIView) {
         if (isSmooth) {
             UIView.animate(withDuration: 10, animations: {
-                viewAnimation.frame.origin.x = +viewAnimation.frame.width*4
+                viewAnimation.frame.origin.x += viewAnimation.frame.width*4
                 let squarePos = self.square.layer.presentation()?.frame
                 let squareX = squarePos?.midX
                 let squareY = squarePos?.midY
@@ -255,15 +256,27 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
                 self.animation(viewAnimation: self.square)
             })
         } else {
-//            UIView.animate(withDuration: 10, animations: {
-//                viewAnimation.frame.origin.x = +viewAnimation.frame.width*4
-//                let squarePos = self.square.layer.presentation()?.frame
-//                let squareX = squarePos?.midX
-//                let squareY = squarePos?.midY
-//                //            print("SquareX: ", squareX, " SquareY: ", squareY)
-//            }) { (_) in
-//                UIView.animate(withDuration: 10, delay: 1, options: [.curveEaseIn], animations: {
-//                    viewAnimation.frame.origin.y += viewAnimation.frame.width*6
+            UIView.animate(withDuration: 1.0, delay: 5.0, options: [.curveEaseIn], animations: {
+                viewAnimation.alpha = 0.0
+            }) { (_) in
+                viewAnimation.frame.origin.x = 50
+                viewAnimation.frame.origin.y = 500
+                UIView.animate(withDuration: 1.0, delay: 0.0, options: [.curveEaseIn], animations: {
+                    self.square.alpha = 1.0
+                    //self.square.layer.presentation()?.frame
+                   // viewAnimation.alpha = 1.0
+                }) { (_) in
+                    UIView.animate(withDuration: 1.0, delay: 5.0, options: [.curveEaseIn], animations: {
+                        viewAnimation.alpha = 0.0
+                    }) { (true) in
+                        self.performSegue(withIdentifier: "postSegue", sender: nil)
+                        }
+                    //self.performSegue(withIdentifier: "postSegue", sender: nil)
+                    }
+                }
+        }
+//            UIView.animate(withDuration: 0.5, delay: 5, options: [.curveEaseIn], animations: {
+//                    viewAnimation.isHidden = true;
 //                }) { (_) in
 //                    UIView.animate(withDuration: 10, delay: 1, options: [.curveEaseIn], animations: {
 //                        viewAnimation.frame.origin.x -= viewAnimation.frame.width*4
@@ -278,7 +291,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
 //            DispatchQueue.main.asyncAfter(deadline: .now() + 43.0, execute: {
 //                self.animation(viewAnimation: self.square)
 //            })
-        }
+        
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
