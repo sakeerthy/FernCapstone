@@ -301,6 +301,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
             let vc = segue.destination as? PostViewController
             vc?.leftData = left
             vc?.rightData = right
+            vc?.isSmoothTest = isSmooth
         }
     }
 }

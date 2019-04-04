@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>465084854923-7f8l13klf7plmpp4jri1n65h4mrd2b4g.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.465084854923-7f8l13klf7plmpp4jri1n65h4mrd2b4g</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCeQ3tcpgR-kRTJXTb_Mar50fc8X5HegKg</string>
+	<key>GCM_SENDER_ID</key>
+	<string>465084854923</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.fern.eyetracking</string>
+	<key>PROJECT_ID</key>
+	<string>eye-tracking-d1e67</string>
+	<key>STORAGE_BUCKET</key>
+	<string>eye-tracking-d1e67.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:465084854923:ios:bbd19b9cdf5b94b2</string>
+	<key>DATABASE_URL</key>
+	<string>https://eye-tracking-d1e67.firebaseio.com</string>
+</dict>
+</plist>
