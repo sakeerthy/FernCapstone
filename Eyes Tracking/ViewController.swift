@@ -228,7 +228,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
         guard let faceAnchor = anchor as? ARFaceAnchor else { return }
         update(withFaceAnchor: faceAnchor)
     }
-
+    
     func animation(viewAnimation: UIView) {
         if (isSmooth) {
             UIView.animate(withDuration: 10, animations: {
@@ -257,41 +257,47 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
             })
         } else {
             UIView.animate(withDuration: 1.0, delay: 5.0, options: [.curveEaseIn], animations: {
-                viewAnimation.alpha = 0.0
+                self.square.alpha = 0.0
             }) { (_) in
-                viewAnimation.frame.origin.x = 50
-                viewAnimation.frame.origin.y = 500
-                UIView.animate(withDuration: 1.0, delay: 0.0, options: [.curveEaseIn], animations: {
+                self.square.frame.origin.x = CGFloat(Int.random(in: 0 ..< 300))
+                self.square.frame.origin.y = CGFloat(Int.random(in: 100 ..< 570))
+                UIView.animate(withDuration: 1.0, delay: 0.5, options: [.curveEaseIn], animations: {
                     self.square.alpha = 1.0
-                    //self.square.layer.presentation()?.frame
-                   // viewAnimation.alpha = 1.0
                 }) { (_) in
                     UIView.animate(withDuration: 1.0, delay: 5.0, options: [.curveEaseIn], animations: {
-                        viewAnimation.alpha = 0.0
-                    }) { (true) in
-                        self.performSegue(withIdentifier: "postSegue", sender: nil)
+                        self.square.alpha = 0.0
+                    }) { (_) in
+                        self.square.frame.origin.x = CGFloat(Int.random(in: 0 ..< 300))
+                        self.square.frame.origin.y = CGFloat(Int.random(in: 100 ..< 570))
+                        UIView.animate(withDuration: 1.0, delay: 0.5, options: [.curveEaseIn], animations: {
+                            self.square.alpha = 1.0
+                        }) { (_) in
+                            UIView.animate(withDuration: 1.0, delay: 5.0, options: [.curveEaseIn], animations: {
+                                self.square.alpha = 0.0
+                            }) { (_) in
+                                self.square.frame.origin.x = CGFloat(Int.random(in: 0 ..< 300))
+                                self.square.frame.origin.y = CGFloat(Int.random(in: 100 ..< 570))
+                                UIView.animate(withDuration: 1.0, delay: 0.5, options: [.curveEaseIn], animations: {
+                                    self.square.alpha = 1.0
+                                }) { (_) in
+                                    UIView.animate(withDuration: 1.0, delay: 5.0, options: [.curveEaseIn], animations: {
+                                        self.square.alpha = 0.0
+                                    }) { (_) in
+                                        self.square.frame.origin.x = CGFloat(Int.random(in: 0 ..< 300))
+                                        self.square.frame.origin.y = CGFloat(Int.random(in: 100 ..< 570))
+                                        UIView.animate(withDuration: 1.0, delay: 0.5, options: [.curveEaseIn], animations: {
+                                            self.square.alpha = 1.0
+                                        }) { (true) in
+                                            self.performSegue(withIdentifier: "postSegue", sender: nil)
+                                        }
+                                    }
+                                }
+                            }
                         }
-                    //self.performSegue(withIdentifier: "postSegue", sender: nil)
                     }
                 }
+            }
         }
-//            UIView.animate(withDuration: 0.5, delay: 5, options: [.curveEaseIn], animations: {
-//                    viewAnimation.isHidden = true;
-//                }) { (_) in
-//                    UIView.animate(withDuration: 10, delay: 1, options: [.curveEaseIn], animations: {
-//                        viewAnimation.frame.origin.x -= viewAnimation.frame.width*4
-//                    }) { (_) in
-//                        UIView.animate(withDuration: 10, delay: 1, options: [.curveEaseIn], animations: {
-//                            viewAnimation.frame.origin.y -= viewAnimation.frame.width*6
-//                        }) { (_) in
-//                        }
-//                    }
-//                }
-//            }
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 43.0, execute: {
-//                self.animation(viewAnimation: self.square)
-//            })
-        
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
