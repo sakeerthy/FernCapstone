@@ -19,7 +19,15 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
 
     var left: [simd_float4x4] = []
     var right: [simd_float4x4] = []
-
+    var leftX: [CGFloat] = []
+    var leftY: [CGFloat] = []
+    var rightX: [CGFloat] = []
+    var rightY: [CGFloat] = []
+    var lookAtX: [Any] = []
+    var lookAtY: [Any] = []
+    var distance: [Any] = []
+    var distanceL: [Any] = []
+    var distanceR: [Any] = []
     var faceNode: SCNNode = SCNNode()
 
     var eyeLNode: SCNNode = {
@@ -182,7 +190,12 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
 
                 eyeLLookAt.y = CGFloat(result.localCoordinates.y) / (self.phoneScreenSize.height / 2) * self.phoneScreenPointSize.height + heightCompensation
             }
-
+            self.leftX.append(eyeLLookAt.x)
+            self.leftY.append(eyeLLookAt.y)
+            self.rightX.append(eyeRLookAt.x)
+            self.rightY.append(eyeRLookAt.y)
+            self.lookAtX.append((eyeRLookAt.x + eyeLLookAt.x) / 2)
+            self.lookAtY.append(-(eyeRLookAt.y + eyeLLookAt.y) / 2)
             // Add the latest position and keep up to 8 recent position to smooth with.
             let smoothThresholdNumber: Int = 10
             self.eyeLookAtPositionXs.append((eyeRLookAt.x + eyeLLookAt.x) / 2)
@@ -209,7 +222,9 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
 
             // Average distance from two eyes
             let distance = (distanceL.length() + distanceR.length()) / 2
-
+            self.distanceL.append(distanceL.length())
+            self.distanceR.append(distanceR.length())
+            self.distance.append(distance)
             // Update distance label value
             self.distanceLabel.text = "\(Int(round(distance * 100))) cm"
             
@@ -308,6 +323,15 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
             vc?.leftData = left
             vc?.rightData = right
             vc?.isSmoothTest = isSmooth
+            vc?.leftX = leftX
+            vc?.leftY = leftY
+            vc?.rightX = rightX
+            vc?.rightY = rightY
+            vc?.lookAtX = lookAtX
+            vc?.lookAtY = lookAtY
+            vc?.distanceL = distanceL
+            vc?.distanceR = distanceR
+            vc?.distance = distance
         }
     }
 }
