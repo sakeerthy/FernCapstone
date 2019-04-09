@@ -90,19 +90,19 @@ class LoginViewController: UIViewController {
                     //            "leftData": leftDummyData,
                     //            "rightdata": rightDummyData,
                     ])
-                let docRef2 = db.collection("doctors").document(email ?? "none").collection("data")
+//                let docRef2 = db.collection("doctors").document(email ?? "none").collection("data")
 
-                var references: [Any] = []
-                docRef2.getDocuments() { (querySnapshot, err) in
-                    if let err = err {
-                        print("Error getting documents: \(err)")
-                    } else {
-                        for document in querySnapshot!.documents {
-                            references.append(document.data())
-                        }
-                        print(references[0])
-                    }
-                }
+//                var references: [Any] = []
+//                docRef2.getDocuments() { (querySnapshot, err) in
+//                    if let err = err {
+//                        print("Error getting documents: \(err)")
+//                    } else {
+//                        for document in querySnapshot!.documents {
+//                            references.append(document.data())
+//                        }
+//                        print(references[0])
+//                    }
+//                }
 
 
 

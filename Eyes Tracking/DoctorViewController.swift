@@ -40,7 +40,7 @@ class DoctorViewController: UIViewController {
         Auth.auth().signIn(withEmail: emailField.text!, password: passwordField.text!) {(user, error) in
             print(user)
             if (user != nil) {
-                self.performSegue(withIdentifier: "login", sender: self)
+                self.performSegue(withIdentifier: "start", sender: self)
             }
             else
             {

@@ -9,6 +9,7 @@
 import UIKit
 
 class SmoothViewController: UIViewController {
+    var patientName: String = ""
 
     @IBOutlet weak var clickButton: UIButton!
     override func viewDidLoad() {
@@ -18,7 +19,16 @@ class SmoothViewController: UIViewController {
         self.clickButton.layer.cornerRadius = self.clickButton.frame.height / 4
         // Do any additional setup after loading the view.
     }
-    
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if segue.destination is ViewController
+        {
+            let vc = segue.destination as? ViewController
+            vc?.isSmooth = true
+            vc?.patientName = self.patientName
+        }
+    }
 
     /*
     // MARK: - Navigation

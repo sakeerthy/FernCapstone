@@ -21,14 +21,15 @@ class PostViewController: UIViewController {
     var leftY: [CGFloat] = []
     var rightX: [CGFloat] = []
     var rightY: [CGFloat] = []
-    var lookAtX: [Any] = []
-    var lookAtY: [Any] = []
+    var lookAtX: [CGFloat] = []
+    var lookAtY: [CGFloat] = []
     var distanceL: [Any] = []
     var distanceR: [Any] = []
     var distance: [Any] = []
-    
+    var squareX: [CGFloat] = []
+    var squareY: [CGFloat] = []
     var isSmoothTest: Bool = true
-    
+    var patientName: String = ""
     var dummyPatient = "Karen Panetta"
     var dummyDoctor = "Mingles Chowder"
     var leftDummyData:[simd_float4x4] = [simd_float4x4([[0.9996633, -0.0025119425, 0.025826829, 0.0], [0.0, 0.99530345, 0.09680419, 0.0], [-0.025948698, -0.09677159, 0.99496835, 0.0], [0.03208242, 0.027041169, 0.02522561, 1.0]]), simd_float4x4([[0.9996633, -0.0025119425, 0.025826829, 0.0], [0.0, 0.99530345, 0.09680419, 0.0], [-0.025948698, -0.09677159, 0.99496835, 0.0], [0.03208242, 0.027041169, 0.02522561, 1.0]])]
@@ -72,6 +73,75 @@ class PostViewController: UIViewController {
     
     //    @IBOutlet weak var simd: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
+
+    func getAverageDistance() -> (Float, Float) {
+        print(squareX)
+        print(squareY)
+        let len = lookAtX.count
+        let x = len % 4
+        print(x)
+        let new_len = len - x
+        let n = new_len/4
+        let distanceX = squareX[1] - squareX[0]
+        let distanceY = squareY[2] - squareY[1]
+
+        var count = 0
+        var sqsX: [Float] = []
+        var sqsY: [Float] = []
+
+        let deltaX = Float(distanceX)/Float(n)
+        let deltaY = Float(distanceY)/Float(n)
+
+        for sqX in squareX {
+            for i in 1...n {
+                if (count == 0) {
+                    sqsX.append(Float(squareX[0]) + (Float(i - 1) * deltaX))
+                    sqsY.append(Float(squareY[0]))
+
+                }
+                else if (count == 1) {
+                    sqsX.append(Float(squareX[1]))
+                    sqsY.append(Float(squareY[1]) + (Float(i - 1) * deltaY))
+
+                }
+                else if (count == 2) {
+                    sqsX.append(Float(squareX[1]) - (Float(i - 1) * deltaX))
+                    sqsY.append(Float(squareY[2]))
+                }
+                else if (count == 3) {
+                    sqsX.append(Float(squareX[0]))
+                    sqsY.append(Float(squareY[3]) - (Float(i - 1) * deltaY))
+
+                }
+            }
+            count = count + 1
+        }
+
+        print(sqsX)
+        print(sqsX.count)
+        print(sqsY)
+
+        print(sqsY.count)
+        print(len)
+        print(new_len)
+
+        var diffsX: [Float] = []
+        var diffsY: [Float] = []
+
+        for k in 0...new_len-1 {
+            diffsX.append(abs(Float(abs(Float(sqsX[k])) - abs(Float(lookAtX[k])))))
+            diffsY.append(abs(abs(Float(sqsY[k])) - abs(Float(lookAtY[k]))))
+        }
+        print(diffsX)
+        print(diffsY)
+        let sumArrayX = diffsX.reduce(0, +)
+        let sumArrayY = diffsY.reduce(0, +)
+
+        print(sumArrayX/Float(new_len))
+        print(sumArrayY/Float(new_len))
+        return (sumArrayX/Float(new_len), sumArrayY/Float(new_len))
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         usernameLabel?.text = "Data"
@@ -81,12 +151,13 @@ class PostViewController: UIViewController {
         //        print(distanceL[0])
         //        print(type(of: distance[0]))
         //        print(distance[0])
-        
+        let (averageDistanceX, averageDistanceY) = getAverageDistance()
+
         let db = Firestore.firestore()
         
         var ref: DocumentReference? = nil
         ref = db.collection("data").addDocument(data: [
-            "patientName": dummyPatient,
+            "patientName": patientName,
             "leftX": leftDummyX,
             "leftY": leftDummyY,
             "rightX": rightDummyX,
@@ -96,6 +167,10 @@ class PostViewController: UIViewController {
             "distanceL": distanceDummyL,
             "distanceR": distanceDummyR,
             "distance": distanceDummy,
+            "averageDistanceX": averageDistanceX,
+            "averageDistanceY": averageDistanceY,
+
+
             //            "leftData": leftDummyData,
             //            "rightdata": rightDummyData,
             ])
@@ -108,12 +183,79 @@ class PostViewController: UIViewController {
             test = "saccadic"
         }
         
-        let docRef = db.collection("patients").document(dummyPatient).collection("tests").document(test).setData([
+        let docRef = db.collection("patients").document(patientName).collection("tests").document(test).setData([
             uuid: ref], merge: true)
         
         simdTransform(left_simd: leftDummyData, right_simd: rightDummyData, reference: (ref ?? nil)!)
         
-        
+        print(squareX)
+        print(squareY)
+        let len = lookAtX.count
+        let x = len % 4
+        print(x)
+        let new_len = len - x
+        let n = new_len/4
+        let distanceX = squareX[1] - squareX[0]
+        let distanceY = squareY[2] - squareY[1]
+
+        var count = 0
+        var sqsX: [Float] = []
+        var sqsY: [Float] = []
+
+        let deltaX = Float(distanceX)/Float(n)
+        let deltaY = Float(distanceY)/Float(n)
+
+        for sqX in squareX {
+            for i in 1...n {
+                if (count == 0) {
+                    sqsX.append(Float(squareX[0]) + (Float(i - 1) * deltaX))
+                    sqsY.append(Float(squareY[0]))
+
+                }
+                else if (count == 1) {
+                    sqsX.append(Float(squareX[1]))
+                    sqsY.append(Float(squareY[1]) + (Float(i - 1) * deltaY))
+
+                }
+                else if (count == 2) {
+                    sqsX.append(Float(squareX[1]) - (Float(i - 1) * deltaX))
+                    sqsY.append(Float(squareY[2]))
+                }
+                else if (count == 3) {
+                    sqsX.append(Float(squareX[0]))
+                    sqsY.append(Float(squareY[3]) - (Float(i - 1) * deltaY))
+
+                }
+            }
+            count = count + 1
+        }
+
+        print(sqsX)
+        print(sqsX.count)
+        print(sqsY)
+
+        print(sqsY.count)
+        print(len)
+        print(new_len)
+
+        var diffsX: [Float] = []
+        var diffsY: [Float] = []
+
+        for k in 0...new_len-1 {
+            diffsX.append(abs(Float(abs(Float(sqsX[k])) - abs(Float(lookAtX[k])))))
+            diffsY.append(abs(abs(Float(sqsY[k])) - abs(Float(lookAtY[k]))))
+        }
+        print(diffsX)
+        print(diffsY)
+        let sumArrayX = diffsX.reduce(0, +)
+        let sumArrayY = diffsY.reduce(0, +)
+
+        print(sumArrayX/Float(new_len))
+        print(sumArrayY/Float(new_len))
+
+//        for i in 0...new_len-1 {
+//            print("Look at: " + String(Float(lookAtX[i])) + " | Square: " + String(sqsX[i]))
+//        }
         //        db.collection("patients").document(dummyPatient).collection("tests").document(ref)
         
         

@@ -23,12 +23,15 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
     var leftY: [CGFloat] = []
     var rightX: [CGFloat] = []
     var rightY: [CGFloat] = []
-    var lookAtX: [Any] = []
-    var lookAtY: [Any] = []
+    var lookAtX: [CGFloat] = []
+    var lookAtY: [CGFloat] = []
     var distance: [Any] = []
     var distanceL: [Any] = []
     var distanceR: [Any] = []
     var faceNode: SCNNode = SCNNode()
+    var squareX: [CGFloat] = []
+    var squareY: [CGFloat] = []
+    var patientName: String = ""
 
     var eyeLNode: SCNNode = {
         let geometry = SCNCone(topRadius: 0.005, bottomRadius: 0, height: 0.2)
@@ -190,12 +193,14 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
 
                 eyeLLookAt.y = CGFloat(result.localCoordinates.y) / (self.phoneScreenSize.height / 2) * self.phoneScreenPointSize.height + heightCompensation
             }
+//            self.squareX.append(self.square.convert(self.square.center, to: self.view) as Any)
+//            self.squareY.append(self.square.layer.presentation()?.frame.midY as Any)
             self.leftX.append(eyeLLookAt.x)
             self.leftY.append(eyeLLookAt.y)
             self.rightX.append(eyeRLookAt.x)
             self.rightY.append(eyeRLookAt.y)
-            self.lookAtX.append((eyeRLookAt.x + eyeLLookAt.x) / 2)
-            self.lookAtY.append(-(eyeRLookAt.y + eyeLLookAt.y) / 2)
+            self.lookAtX.append(round((eyeRLookAt.x + eyeLLookAt.x) / 2) + self.phoneScreenPointSize.width / 2)
+            self.lookAtY.append(round(-(eyeRLookAt.y + eyeLLookAt.y) / 2) + self.phoneScreenPointSize.height / 2)
             // Add the latest position and keep up to 8 recent position to smooth with.
             let smoothThresholdNumber: Int = 10
             self.eyeLookAtPositionXs.append((eyeRLookAt.x + eyeLLookAt.x) / 2)
@@ -251,25 +256,39 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
                 let squarePos = self.square.layer.presentation()?.frame
                 let squareX = squarePos?.midX
                 let squareY = squarePos?.midY
-    //            print("SquareX: ", squareX, " SquareY: ", squareY)
+                self.squareX.append(squareX!)
+                self.squareY.append(squareY!)
+                //            print("SquareX: ", squareX, " SquareY: ", squareY)
             }) { (_) in
                 UIView.animate(withDuration: 10, delay: 1, options: [.curveEaseIn], animations: {
                     viewAnimation.frame.origin.y += viewAnimation.frame.width*6
+                    let squarePos = self.square.layer.presentation()?.frame
+                    let squareX = squarePos?.midX
+                    let squareY = squarePos?.midY
+                    self.squareX.append(squareX!)
+                    self.squareY.append(squareY!)
                 }) { (_) in
                     UIView.animate(withDuration: 10, delay: 1, options: [.curveEaseIn], animations: {
                         viewAnimation.frame.origin.x -= viewAnimation.frame.width*4
+                        let squarePos = self.square.layer.presentation()?.frame
+                        let squareX = squarePos?.midX
+                        let squareY = squarePos?.midY
+                        self.squareX.append(squareX!)
+                        self.squareY.append(squareY!)
                     }) { (_) in
                         UIView.animate(withDuration: 10, delay: 1, options: [.curveEaseIn], animations: {
                             viewAnimation.frame.origin.y -= viewAnimation.frame.width*6
+                            let squarePos = self.square.layer.presentation()?.frame
+                            let squareX = squarePos?.midX
+                            let squareY = squarePos?.midY
+                            self.squareX.append(squareX!)
+                            self.squareY.append(squareY!)
                         }) { (true) in
                             self.performSegue(withIdentifier: "postSegue", sender: nil)
                         }
                     }
                 }
             }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 43.0, execute: {
-                self.animation(viewAnimation: self.square)
-            })
         } else {
             UIView.animate(withDuration: 1.0, delay: 5.0, options: [.curveEaseIn], animations: {
                 self.square.alpha = 0.0
@@ -332,6 +351,9 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
             vc?.distanceL = distanceL
             vc?.distanceR = distanceR
             vc?.distance = distance
+            vc?.squareX = squareX
+            vc?.squareY = squareY
+            vc?.patientName = patientName
         }
     }
 }

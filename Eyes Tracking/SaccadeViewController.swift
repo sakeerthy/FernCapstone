@@ -17,7 +17,8 @@ class SaccadeViewController: UIViewController {
     
 
     @IBOutlet weak var contButton: UIButton!
-    
+    var patientName: String = ""
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -35,6 +36,7 @@ class SaccadeViewController: UIViewController {
         {
             let vc = segue.destination as? ViewController
             vc?.isSmooth = false
+            vc?.patientName = self.patientName
         }
     }
     

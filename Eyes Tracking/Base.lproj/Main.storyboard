@@ -59,9 +59,6 @@
                                 <state key="normal" title="Doctor">
                                     <color key="titleColor" red="0.54117647059999996" green="0.74117647060000003" blue="0.070588235289999995" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
-                                <connections>
-                                    <segue destination="DXq-ec-W0Y" kind="show" id="pVY-2c-7R1"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -607,12 +604,12 @@ Position Estimation</string>
                         <color key="tintColor" red="0.63648515939999994" green="0.76693797109999995" blue="0.25081387160000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="Do1-X1-UAX" kind="relationship" relationship="rootViewController" id="x6z-15-S21"/>
+                        <segue destination="DXq-ec-W0Y" kind="relationship" relationship="rootViewController" id="o4I-1z-HUK"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NGg-Hz-omK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="529" y="-1349"/>
+            <point key="canvasLocation" x="2222" y="-2090"/>
         </scene>
         <!--Saccade View Controller-->
         <scene sceneID="YFm-PS-ryY">
@@ -730,10 +727,11 @@ Position Estimation</string>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Cvw-ZH-nb6"/>
                     </view>
+                    <navigationItem key="navigationItem" id="0vn-ZE-1JN"/>
                     <connections>
                         <outlet property="emailField" destination="8LT-VX-vGD" id="Tse-PD-8A6"/>
                         <outlet property="passwordField" destination="ntB-OD-TAx" id="lMD-mj-yYJ"/>
-                        <segue destination="4za-q0-qtm" kind="show" identifier="login" id="k5k-vK-0g4"/>
+                        <segue destination="Do1-X1-UAX" kind="show" identifier="start" id="MUN-IX-6mJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cc1-yu-U0g" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -753,7 +751,7 @@ Position Estimation</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XaA-j7-nMZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2942" y="-1349"/>
+            <point key="canvasLocation" x="3650" y="-1349"/>
         </scene>
     </scenes>
     <resources>

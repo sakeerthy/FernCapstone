@@ -7,11 +7,38 @@
 //
 
 import UIKit
+import FirebaseAuth
+import Firebase
+import FirebaseFirestore
 
 class SelectAssessmentViewController: UIViewController {
 
     @IBOutlet weak var saccButton: UIButton!
     @IBOutlet weak var smoothButton: UIButton!
+    var handle: AuthStateDidChangeListenerHandle?
+    var patientName: String = ""
+
+    override func viewDidAppear(_ animated: Bool) {
+        handle = Auth.auth().addStateDidChangeListener { (auth, user) in
+            // ...
+        }
+
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if segue.destination is SmoothViewController
+        {
+            let vc = segue.destination as? SmoothViewController
+            vc?.patientName = patientName
+        }
+        if segue.destination is SaccadeViewController
+        {
+            let vc = segue.destination as? SaccadeViewController
+            vc?.patientName = patientName
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 

@@ -28,6 +28,14 @@ class PatientInfoViewController: UIViewController {
         self.view.endEditing(true)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if segue.destination is SelectAssessmentViewController
+        {
+            let vc = segue.destination as? SelectAssessmentViewController
+            vc?.patientName = self.PatientTextField.text ?? "None"
+        }
+    }
 
     /*
     // MARK: - Navigation
