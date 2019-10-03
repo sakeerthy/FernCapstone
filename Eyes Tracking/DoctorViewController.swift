@@ -11,13 +11,24 @@ import Firebase
 import FirebaseFirestore
 import FirebaseAuth
 
-class DoctorViewController: UIViewController {
+class DoctorViewController: UIViewController, UITextFieldDelegate {
+
+    @IBOutlet weak var login: UIButton!
 
     @IBOutlet weak var emailField: UITextField!
 
     @IBOutlet weak var passwordField: UITextField!
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        self.emailField.delegate = self
+        self.passwordField.delegate = self
+
+        self.login.layer.borderWidth = 0.5
+        self.login.layer.borderColor = UIColor.white.cgColor
+        self.login.layer.cornerRadius = self.login.frame.height / 4
+
         let db = Firestore.firestore()
 
         var docs: [Any] = []
@@ -34,6 +45,11 @@ class DoctorViewController: UIViewController {
             }
         }
         // Do any additional setup after loading the view.
+    }
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
 
     @IBAction func login(_ sender: UIButton) {
